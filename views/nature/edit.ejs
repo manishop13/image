@@ -1,0 +1,33 @@
+<% include ../partials/header.ejs %>
+        <div class="container">
+            <div class="row">
+                <div class="my-center">
+                    <h1 class="text-center">Please Edit your Photo</h1>
+                    <form action="/photo/<%= photo._id%>?_method=PUT" method="POST">
+    
+                        <div class="form-group">
+                            <label for="source">Image URL</label>
+                            <input class ="form-control" id="source" type = "text" name = photo[source] value=<%= photo.source%> required>
+                        </div>
+                         <div class="form-group">
+                            <label for="title">Title</label>
+                            <textarea  class ="form-control" id="title" type = "text" name = photo[title] maxlength="22" style="height:40px" required><%= photo.title%></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                              <textarea class ="form-control" id="description" name = photo[location] style="height:100px"><%= photo.location%></textarea>
+                            <!--<input class ="form-control" id="location" type = "text" name = photo[location] value= <%= photo.location%> >-->
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class ="form-control" id="description" name = photo[description] style="height:200px"><%= photo.description%></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-lg btn-primary btn-block">Submit</button>
+                        </div>
+                        <a href="/photo/<%= photo._id%>">Go Back</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+<% include ../partials/footer.ejs %>

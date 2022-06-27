@@ -1,0 +1,40 @@
+<% include ../partials/header.ejs %>
+    <div class="container">
+        <header class="jumbotron">
+          <h1>Welcome to iNature!</h1>
+          <p>Farming your life with inspiration!</p>
+          <p><a class="btn btn-primary btn-md" href="/photo/new" role="button">Add a new photo</a></p>
+            <form action="/nature" method="GET" class="form-inline" id="photo-search">
+                <div class="form-group">
+                  <input type="text" name="search" placeholder="Photo search..." class="form-control">
+                </div>
+            </form>
+        </header>
+        <div class="grid effect-3 row" id="photo-grid">
+            <% data.forEach(function(photo){%>
+            <li class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="thumbnail" id="mythumbnail">
+                          <img src="<%= photo.source%>">
+
+                        <div style="margin: 0 10px">
+                            <h4 class="pull-right"><a href="/photo/<%= photo._id %>">Info</a></h4>
+                            <h4 class="pull-left"><strong><%= photo.title%></strong></h4>
+                        </div>
+                    </div>
+            </li>
+            <% });%>
+        </div>
+    </div>
+	<script src="script/masonry.pkgd.min.js"></script>
+	<script src="script/imagesloaded.js"></script>
+	<script src="script/classie.js"></script>
+	<script src="script/AnimOnScroll.js"></script>
+	<script>
+		new AnimOnScroll( document.getElementById( 'photo-grid' ), {
+			minDuration : 0.4,
+			maxDuration : 0.7,
+			viewportFactor : 0.2
+		} );
+	</script>
+    <script src="/script/search.js" async defer></script>
+<% include ../partials/footer.ejs %>
